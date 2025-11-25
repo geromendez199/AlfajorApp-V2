@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,7 +12,14 @@
 }
 
 body {
-  @apply font-sans bg-slate-50 text-slate-900 antialiased;
+  @apply font-sans bg-brand-cream text-brand-green antialiased;
+}
+
+h1,
+h2,
+h3,
+.heading-font {
+  font-family: 'Oswald', 'Inter', system-ui, sans-serif;
 }
 
 a {
