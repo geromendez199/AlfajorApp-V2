@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { OrderProvider } from './context/OrderContext.jsx';
 import AdminPage from './pages/AdminPage.jsx';
 import KitchenPage from './pages/KitchenPage.jsx';
@@ -7,7 +7,7 @@ import POSPage from './pages/POSPage.jsx';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route
           path="/"
@@ -20,7 +20,7 @@ function App() {
         <Route path="/cocina" element={<KitchenPage />} />
         <Route path="/admin" element={<AdminPage />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
