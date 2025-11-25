@@ -2,6 +2,7 @@ import {
   addDoc,
   collection,
   doc,
+  getDocs,
   onSnapshot,
   orderBy,
   query,
@@ -10,11 +11,20 @@ import {
 } from 'firebase/firestore';
 import { db } from './config';
 
-export function getProducts() {
-  return Promise.resolve([
-    { id: 1, name: 'Alfajor', price: 1500, category: 'alfajores' },
-    { id: 2, name: 'Papas', price: 2000, category: 'papas' },
-  ]);
+export async function getProducts() {
+  const productsRef = collection(db, 'products');
+  const snapshot = await getDocs(productsRef);
+
+  return snapshot.docs.map((productDoc) => ({
+    id: productDoc.id,
+    ...productDoc.data(),
+  }));
+}
+
+export async function addProduct(product) {
+  const productsRef = collection(db, 'products');
+  const docRef = await addDoc(productsRef, product);
+  return { id: docRef.id, ...product };
 }
 
 export async function createOrder(orderData) {
